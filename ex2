@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Функція для обчислення чисел Фібоначчі до n-го числа
+vector<long long> calculateFibonacci(int n) {
+    vector<long long> fibonacciSeries(n);
+    if (n > 0) fibonacciSeries[0] = 0;
+    if (n > 1) fibonacciSeries[1] = 1;
+    for (int i = 2; i < n; ++i) {
+        fibonacciSeries[i] = fibonacciSeries[i - 1] + fibonacciSeries[i - 2];
+    }
+    return fibonacciSeries;
+}
+
+int main() {
+    int n;
+
+    cout << "Введіть кількість чисел Фібоначчі для розрахунку: ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Будь ласка, введіть додатнє число." << endl;
+        return 1;
+    }
+
+    vector<long long> fibonacciSeries = calculateFibonacci(n);
+
+    cout << "Числа Фібоначчі до " << n << " числа:" << endl;
+    for (const auto &num : fibonacciSeries) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
